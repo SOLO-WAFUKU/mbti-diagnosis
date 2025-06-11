@@ -402,21 +402,81 @@ const questions = [
 const mbtiTypes = {
     'ENTJ': {
         title: '指揮官',
-        strengths: ['リーダーシップに優れる', '効率性を重視する', '目標達成能力が高い'],
-        weaknesses: ['他人の感情に鈍感になりがち', '完璧主義になりすぎる', '批判を受け入れにくい'],
-        careers: ['CEO・経営者', 'プロジェクトマネージャー', '起業家']
+        subtitle: '天性のリーダー',
+        description: 'あなたは生まれながらのリーダーです。大きな目標を掲げ、効率的にチームを導くことに喜びを感じます。「不可能」という言葉を信じず、常に革新と改善を追求します。困難な状況でも冷静に判断し、最適な解決策を見つけ出す能力は群を抜いています。',
+        personality: 'カフェで友人を待つとき、あなたは既に次のプロジェクトの企画書をスマホで確認しているかもしれません。無駄な時間を嫌い、常に生産性を意識していますが、その分、チームメンバーからの信頼は絶大です。',
+        strengths: ['天性のリーダーシップと統率力', '複雑な問題を体系的に解決する能力', '目標達成への並外れた推進力', '効率性と成果を重視する実践的思考', '長期的なビジョンを描く戦略性'],
+        weaknesses: ['他人の感情的ニーズを見落としがち', '完璧主義が過度になることがある', '批判や失敗を個人的に受け取りやすい', '細かい作業や単調な業務に苦手意識', '急いで決断しすぎる傾向'],
+        careers: ['CEO・経営者', 'プロジェクトマネージャー', '起業家', '戦略コンサルタント', '投資銀行家', '政治家'],
+        famous: ['スティーブ・ジョブズ', 'ナポレオン・ボナパルト', 'マーガレット・サッチャー'],
+        compatibility: {
+            best: ['INFP', 'INTP', 'ENFP'],
+            good: ['INTJ', 'ENFJ', 'ENTP'],
+            challenging: ['ISFP', 'ISFJ', 'ESFJ']
+        },
+        growth: [
+            '他者の感情や意見により積極的に耳を傾ける',
+            '完璧を求めすぎず、80%の完成度で進める練習',
+            '定期的な休息とリラックス時間を意図的に作る',
+            'チームメンバーの個人的な成長にも関心を向ける'
+        ],
+        actionPlan: [
+            '今週中に部下や同僚1人と1対1の対話時間を設ける',
+            '次のプロジェクトで意図的に他者の意見を取り入れる場面を作る',
+            '毎日15分の瞑想や散歩でマインドフルネスを実践する'
+        ]
     },
     'ENTP': {
         title: '討論者',
-        strengths: ['創造性と革新性に富む', 'コミュニケーション能力が高い', '適応力がある'],
-        weaknesses: ['ルーチンワークが苦手', '物事を最後まで完成させにくい', '細かい作業を避けがち'],
-        careers: ['マーケティング担当者', 'コンサルタント', '起業家']
+        subtitle: 'アイデアの宝庫',
+        description: 'あなたの頭の中は常に新しいアイデアで溢れています。議論を通じて思考を深め、可能性を追求することに情熱を注ぎます。型にはまることを嫌い、常に新しい視点や革新的な解決策を見つけ出します。',
+        personality: '会話の中で「でも、もしこうだったら？」と質問することが多いかもしれません。一つの話題から連想して、気づくと全く違う話をしていることも。その柔軟な思考力で、周りの人に新しい視点を提供します。',
+        strengths: ['革新的なアイデアと創造性', '優れたコミュニケーション能力', '変化への高い適応力', '多角的な視点での問題解決', '人を魅了するプレゼンテーション力'],
+        weaknesses: ['ルーチンワークへの苦手意識', '最後まで完成させることの困難さ', '細かい作業や詳細への注意不足', '計画性の不足', '一つのことに集中し続けることの難しさ'],
+        careers: ['マーケティング担当者', 'コンサルタント', '起業家', 'ジャーナリスト', '広告クリエイター', '研究開発職'],
+        famous: ['ウォルト・ディズニー', 'マーク・トウェイン', 'ロバート・ダウニー・Jr'],
+        compatibility: {
+            best: ['INFJ', 'INTJ', 'ENFJ'],
+            good: ['ENTP', 'ENFP', 'ENTJ'],
+            challenging: ['ISTJ', 'ISFJ', 'ESTJ']
+        },
+        growth: [
+            '一つのプロジェクトを最後まで完成させる習慣をつける',
+            '詳細や実行計画により注意を払う',
+            '他者の感情により敏感になる練習をする',
+            '定期的なルーチンの中にも価値を見出す'
+        ],
+        actionPlan: [
+            '今取り組んでいるプロジェクトの完成予定日を設定する',
+            '毎日のTo-Doリストを作成し、小さなタスクから実行する',
+            '週1回、詳細な計画を立てる時間を設ける'
+        ]
     },
     'ENFJ': {
         title: '主人公',
-        strengths: ['人を理解し導く能力', '共感力が高い', 'チームワークを重視'],
-        weaknesses: ['自分のニーズを後回しにしがち', '批判に敏感', '他人に過度に期待する'],
-        careers: ['教師・講師', 'カウンセラー', 'HR担当者']
+        subtitle: '人々のインスピレーター',
+        description: 'あなたは人々の潜在能力を見抜き、それを引き出すことに喜びを感じます。他者の成長を支援し、チーム全体をより良い方向に導くことが得意です。深い共感力と洞察力で、人々の心に寄り添います。',
+        personality: '友人の相談に乗るとき、あなたは単に話を聞くだけでなく、その人の本当の可能性を見つけ出そうとします。時には相手が気づいていない才能や強みを指摘し、背中を押してあげることも多いでしょう。',
+        strengths: ['深い共感力と理解力', '人を導き成長させる能力', '優れたコミュニケーションスキル', 'チーム全体を統合する力', '他者のモチベーションを高める才能'],
+        weaknesses: ['自分のニーズを後回しにしがち', '批判や対立に敏感すぎる', '他人に過度な期待をかけてしまう', '完璧主義的になりやすい', 'ネガティブな感情を抑え込みがち'],
+        careers: ['教師・講師', 'カウンセラー', 'HR担当者', 'コーチ', 'NGO職員', '心理学者'],
+        famous: ['オプラ・ウィンフリー', 'バラク・オバマ', 'マーティン・ルーサー・キング・Jr'],
+        compatibility: {
+            best: ['INFP', 'ISFP', 'ENTP'],
+            good: ['ENFP', 'INFJ', 'ENTJ'],
+            challenging: ['ISTP', 'ESTP', 'ESTJ']
+        },
+        growth: [
+            '自分のニーズと感情を大切にする習慣をつける',
+            '完璧でなくても良しとする心の余裕を持つ',
+            '他者への期待値を現実的なレベルに調整する',
+            '時には「ノー」と言う勇気を持つ'
+        ],
+        actionPlan: [
+            '毎日10分間、自分の感情を振り返る時間を作る',
+            '今週、自分のために何か特別なことを1つ実行する',
+            '断ることに対する練習を小さなことから始める'
+        ]
     },
     'ENFP': {
         title: '運動家',
@@ -677,10 +737,39 @@ function showResult(result) {
     document.getElementById('result-type').textContent = result.type;
     document.getElementById('result-title').textContent = typeInfo.title;
     
+    // 新しいコンテンツを表示（存在する場合のみ）
+    if (typeInfo.subtitle) {
+        document.getElementById('result-subtitle').textContent = typeInfo.subtitle;
+    }
+    if (typeInfo.description) {
+        document.getElementById('result-description').textContent = typeInfo.description;
+    }
+    if (typeInfo.personality) {
+        document.getElementById('result-personality').textContent = typeInfo.personality;
+    }
+    
     // 強み・弱み・適職を表示
     displayList('strengths-list', typeInfo.strengths);
     displayList('weaknesses-list', typeInfo.weaknesses);
     displayList('careers-list', typeInfo.careers);
+    
+    // 有名人リストを表示
+    if (typeInfo.famous) {
+        displayFamousList('famous-list', typeInfo.famous);
+    }
+    
+    // 相性分析を表示
+    if (typeInfo.compatibility) {
+        displayCompatibility(typeInfo.compatibility);
+    }
+    
+    // 成長プランを表示
+    if (typeInfo.growth) {
+        displayList('growth-list', typeInfo.growth);
+    }
+    if (typeInfo.actionPlan) {
+        displayList('action-plan-list', typeInfo.actionPlan);
+    }
     
     // グラフを描画
     drawPersonalityChart(result.scores);
@@ -695,6 +784,55 @@ function displayList(elementId, items) {
         const li = document.createElement('li');
         li.textContent = item;
         list.appendChild(li);
+    });
+}
+
+// 有名人リストを表示
+function displayFamousList(elementId, famousPeople) {
+    const list = document.getElementById(elementId);
+    list.innerHTML = '';
+    
+    famousPeople.forEach(person => {
+        const span = document.createElement('span');
+        span.textContent = person;
+        span.className = 'bg-purple-200 px-3 py-1 rounded-full text-sm font-medium';
+        list.appendChild(span);
+    });
+}
+
+// 相性分析を表示
+function displayCompatibility(compatibility) {
+    // 最高の相性
+    const bestContainer = document.getElementById('compatibility-best');
+    bestContainer.innerHTML = '';
+    compatibility.best.forEach(type => {
+        const span = document.createElement('span');
+        span.textContent = type;
+        span.className = 'bg-green-200 px-2 py-1 rounded text-sm font-medium cursor-pointer hover:bg-green-300 transition-colors';
+        span.title = `${type}タイプとの相性詳細を見る`;
+        bestContainer.appendChild(span);
+    });
+    
+    // 良好な相性
+    const goodContainer = document.getElementById('compatibility-good');
+    goodContainer.innerHTML = '';
+    compatibility.good.forEach(type => {
+        const span = document.createElement('span');
+        span.textContent = type;
+        span.className = 'bg-blue-200 px-2 py-1 rounded text-sm font-medium cursor-pointer hover:bg-blue-300 transition-colors';
+        span.title = `${type}タイプとの相性詳細を見る`;
+        goodContainer.appendChild(span);
+    });
+    
+    // 刺激的な相性
+    const challengingContainer = document.getElementById('compatibility-challenging');
+    challengingContainer.innerHTML = '';
+    compatibility.challenging.forEach(type => {
+        const span = document.createElement('span');
+        span.textContent = type;
+        span.className = 'bg-yellow-200 px-2 py-1 rounded text-sm font-medium cursor-pointer hover:bg-yellow-300 transition-colors';
+        span.title = `${type}タイプとの相性詳細を見る`;
+        challengingContainer.appendChild(span);
     });
 }
 
