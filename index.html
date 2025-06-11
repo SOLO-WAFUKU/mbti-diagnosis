@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<!--
+MIT License
+
+Copyright (c) 2025 MBTI診断アプリ
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBTI性格診断 - あなたの性格タイプを発見しよう</title>
+    
+    <!-- OGP Meta Tags -->
+    <meta property="og:title" content="MBTI性格診断 - あなたの性格タイプを発見しよう">
+    <meta property="og:description" content="無料のMBTI性格診断で、あなたの16タイプの性格を詳しく分析します。強み・弱み・適職も分かります。">
+    <meta property="og:image" content="https://example.com/og-image.jpg">
+    <meta property="og:url" content="https://example.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MBTI性格診断">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MBTI性格診断 - あなたの性格タイプを発見しよう">
+    <meta name="twitter:description" content="無料のMBTI性格診断で、あなたの16タイプの性格を詳しく分析します。強み・弱み・適職も分かります。">
+    <meta name="twitter:image" content="https://example.com/twitter-image.jpg">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- カスタムスタイル -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+    <!-- 固定ヘッダー -->
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50 border-b border-slate-200">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <h1 class="text-lg font-bold text-indigo-700">MBTI性格診断</h1>
+                <div id="progress-info" class="text-sm text-slate-600">
+                    <span id="current-question">1</span> / <span id="total-questions">60</span>
+                </div>
+            </div>
+            <div class="mt-2">
+                <div class="w-full bg-slate-300 rounded-full h-2">
+                    <div id="progress-bar" class="bg-indigo-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- AD_SLOT_1: 320x100 / top of page -->
+    <!-- Google AdSenseコード用プレースホルダ - 実際の広告コードに置き換えてください -->
+    <div id="ad-slot-1" class="mt-20 mb-6 flex justify-center">
+        <div class="bg-slate-200 border-2 border-dashed border-slate-400 rounded-lg p-4 text-center text-slate-500 text-sm">
+            広告スペース (320x100)<br>
+            <!-- 実装時: Google AdSenseコードをここに挿入 -->
+        </div>
+    </div>
+
+    <main class="container mx-auto px-4 pb-8">
+        <!-- スタート画面 -->
+        <section id="start-screen" class="max-w-2xl mx-auto text-center py-8">
+            <div class="bg-white rounded-lg shadow-md p-8 mb-6">
+                <h2 class="text-3xl font-bold text-indigo-800 mb-4">MBTI性格診断</h2>
+                <p class="text-slate-600 mb-6 leading-relaxed">
+                    60の質問に答えて、あなたの性格タイプを発見しましょう。<br>
+                    強み・弱み・適職も詳しく分析します。
+                </p>
+                <button id="start-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" aria-label="診断を開始する">
+                    診断を開始する
+                </button>
+            </div>
+        </section>
+
+        <!-- 質問画面 -->
+        <section id="question-screen" class="max-w-2xl mx-auto hidden">
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 id="question-text" class="text-xl font-semibold text-slate-800 mb-6" aria-live="polite"></h3>
+                
+                <div class="space-y-4">
+                    <button id="option-a" class="w-full p-4 text-left border-2 border-slate-300 rounded-lg hover:border-indigo-400 hover:bg-indigo-50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" aria-label="選択肢A"></button>
+                    <button id="option-b" class="w-full p-4 text-left border-2 border-slate-300 rounded-lg hover:border-indigo-400 hover:bg-indigo-50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" aria-label="選択肢B"></button>
+                </div>
+            </div>
+
+            <!-- AD_SLOT_2: responsive / mid-content -->
+            <!-- Google AdSenseコード用プレースホルダ - 実際の広告コードに置き換えてください -->
+            <div id="ad-slot-2" class="mb-6 flex justify-center">
+                <div class="bg-slate-200 border-2 border-dashed border-slate-400 rounded-lg p-4 text-center text-slate-500 text-sm w-full max-w-md">
+                    広告スペース (レスポンシブ)<br>
+                    <!-- 実装時: Google AdSenseコードをここに挿入 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 結果画面 -->
+        <section id="result-screen" class="max-w-4xl mx-auto hidden">
+            <div class="bg-white rounded-lg shadow-md p-8 mb-6">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-indigo-800 mb-2">診断結果</h2>
+                    <div id="result-type" class="text-6xl font-bold text-emerald-600 mb-4" aria-live="polite"></div>
+                    <h3 id="result-title" class="text-2xl font-semibold text-slate-700 mb-4"></h3>
+                </div>
+
+                <!-- 各指標の割合グラフ -->
+                <div class="mb-8">
+                    <h4 class="text-xl font-semibold text-slate-700 mb-4">各指標の割合</h4>
+                    <div class="bg-slate-50 p-6 rounded-lg">
+                        <canvas id="personality-chart" width="400" height="200" aria-label="性格指標の割合を示すグラフ"></canvas>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <!-- 強み -->
+                    <div class="bg-emerald-50 p-6 rounded-lg border border-emerald-200">
+                        <h4 class="text-lg font-semibold text-emerald-800 mb-3">💪 強み</h4>
+                        <ul id="strengths-list" class="space-y-2 text-emerald-700"></ul>
+                    </div>
+
+                    <!-- 弱み -->
+                    <div class="bg-orange-50 p-6 rounded-lg border border-orange-200">
+                        <h4 class="text-lg font-semibold text-orange-800 mb-3">⚠️ 注意点</h4>
+                        <ul id="weaknesses-list" class="space-y-2 text-orange-700"></ul>
+                    </div>
+
+                    <!-- 適職 -->
+                    <div class="bg-indigo-50 p-6 rounded-lg border border-indigo-200">
+                        <h4 class="text-lg font-semibold text-indigo-800 mb-3">💼 適職</h4>
+                        <ul id="careers-list" class="space-y-2 text-indigo-700"></ul>
+                    </div>
+                </div>
+
+                <!-- SNSシェアボタン -->
+                <div class="text-center mb-6">
+                    <h4 class="text-lg font-semibold text-slate-700 mb-4">結果をシェア</h4>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <button id="share-twitter" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" aria-label="Twitterでシェア">
+                            Twitterでシェア
+                        </button>
+                        <button id="share-copy" class="bg-slate-600 hover:bg-slate-700 text-white px-6 py-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2" aria-label="URLをコピー">
+                            URLをコピー
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 再テストボタン -->
+                <div class="text-center">
+                    <button id="restart-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" aria-label="もう一度診断する">
+                        もう一度診断する
+                    </button>
+                </div>
+            </div>
+
+            <!-- AD_SLOT_3: 300x250 / results page -->
+            <!-- Google AdSenseコード用プレースホルダ - 実際の広告コードに置き換えてください -->
+            <div id="ad-slot-3" class="mb-6 flex justify-center">
+                <div class="bg-slate-200 border-2 border-dashed border-slate-400 rounded-lg p-4 text-center text-slate-500 text-sm" style="width: 300px; height: 250px;">
+                    広告スペース (300x250)<br>
+                    <!-- 実装時: Google AdSenseコードをここに挿入 -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="bg-slate-800 text-slate-300 py-8 mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-4">
+                &copy; 2025 MBTI性格診断アプリ. All rights reserved.
+            </p>
+            <p class="text-sm text-slate-400">
+                MBTI®は、Myers-Briggs Type Indicator®の略称で、Myers & Briggs Foundation の商標または登録商標です。<br>
+                本サービスはMyers & Briggs Foundation とは関係ありません。
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
